@@ -15,7 +15,9 @@ class BlogPost extends Component {
                 title: '',
                 body: '',
                 userId: 1,
-            }
+            },
+            //TODO Mengkondisikan button update di form
+            isUpdate: false
         }
     }
 
@@ -35,6 +37,14 @@ class BlogPost extends Component {
         axios.post('http://localhost:3004/posts', this.state.formBlogPost).then(res => {
             console.log(res);
             this.getPostApi();
+            this.setState({
+                formBlogPost: {
+                    id: 1,
+                    title: '',
+                    body: '',
+                    userId: 1,
+                },
+            })
         }, err => {
             console.log('Error: ', err);
         });
@@ -74,8 +84,10 @@ class BlogPost extends Component {
         let timestamp = new Date().getTime();
         //TODO Inisialisasi value dari form input
         let value = event.target.value;
-        //TODO kita sasar id (target)
-        formBlogPostNew['id'] = timestamp;
+        if (!this.state.isUpdate) {
+            //TODO kita sasar id (target)
+            formBlogPostNew['id'] = timestamp;
+        }
         //TODO kita sasar title/body-nya (target)
         formBlogPostNew[event.target.name] = value;
         //TODO ubah state awal dengan copy-an obj state
@@ -87,7 +99,38 @@ class BlogPost extends Component {
     //TODO Event ketika user menekan tombol submit
     handleSubmit = () => {
         // console.log(this.state.formBlogPost);
-        this.postDataToAPI();
+        if (this.state.isUpdate) {
+            this.putDataToAPI();
+        } else {
+            this.postDataToAPI();
+        }
+    }
+
+    //TODO Jalankan library axios dengan method PUT
+    putDataToAPI = () => {
+        //TODO Jalankan library axios untuk method PUT
+        axios.put(`http://localhost:3004/posts/${this.state.formBlogPost.id}`, this.state.formBlogPost).then(res => {
+            console.log(res);
+            this.getPostApi();
+            this.setState({
+                isUpdate: false,
+                formBlogPost: {
+                    id: 1,
+                    title: '',
+                    body: '',
+                    userId: 1,
+                },
+            })
+        });
+    }
+
+    //TODO Mengambil nilai data yang akan di update
+    handleUpdate = (data) => {
+        // console.log(data);
+        this.setState({
+            formBlogPost: data,
+            isUpdate: true
+        });
     }
 
     render(){
@@ -96,14 +139,14 @@ class BlogPost extends Component {
                 <p className="section-title">Blog Post</p>
                 <div className="form-add">
                     <label htmlFor="title">Judul</label>
-                    <input type="text" name="title" placeholder="Tambahkan judul" onChange={this.handleFormChange} />
+                    <input type="text" name="title" value={this.state.formBlogPost.title} placeholder="Tambahkan judul" onChange={this.handleFormChange} />
                     <label htmlFor="body">Deskripsi</label>
-                    <textarea name="body" id="body-content" cols="30" rows="10" onChange={this.handleFormChange}></textarea>
+                    <textarea name="body" value={this.state.formBlogPost.body} id="body-content" cols="30" rows="10" onChange={this.handleFormChange}></textarea>
                     <button className="btn-submit" onClick={this.handleSubmit}>Simpan</button>
                 </div>
                 {
                     this.state.post.map(post => {
-                        return <Post key={post.id} data={post} remove={this.handleRemove}/>
+                        return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate} />
                     })
                 }
 
