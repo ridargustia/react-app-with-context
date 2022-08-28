@@ -1,6 +1,6 @@
 //TODO LIBRARY
 import React, {Component, Fragment} from "react";
-import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 
 //TODO PAGES
 import BlogPost from "../pages/BlogPost/BlogPost";
@@ -25,7 +25,7 @@ class Home extends Component {
     render(){
         return (
             //TODO MEMBUAT ROUTING APLIKASI
-            <BrowserRouter>
+            <Router>
                 {/* <div>
                     <Product />
                     <hr />
@@ -50,7 +50,7 @@ class Home extends Component {
                         <Route path="/youtube" element={<YoutubeComp />} />
                     </Routes>
                 </Fragment>
-            </BrowserRouter>
+            </Router>
         )
     }
 }
