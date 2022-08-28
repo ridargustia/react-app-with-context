@@ -1,7 +1,12 @@
+//TODO LIBRARY
 import React, {Component, Fragment} from "react";
-import Post from "../../component/Post/Post";
-import './BlogPost.css';
 import axios from "axios";
+
+//TODO PAGES
+import Post from "../../../component/Post/Post";
+
+//TODO STYLES
+import './BlogPost.css';
 
 class BlogPost extends Component {
     constructor(props){

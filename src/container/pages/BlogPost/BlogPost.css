@@ -16,13 +16,13 @@
     margin-left: 20px;
 }
 
-.img-thumb{
+.img-thumbnail{
     width: 200px;
     height: 150px;
     margin-right: 20px;
 }
 
-.img-thumb img{
+.img-thumbnail img{
     object-fit: cover;
     width: 200px;
     height: 150px;
@@ -32,7 +32,7 @@
     flex: 1;
 }
 
-.content p.title{
+.content p.judul{
     margin: 0px;
     font-size: 20px;
     font-weight: bold;
@@ -40,7 +40,7 @@
     color: #3d4a6e;
 }
 
-.content p.desc{
+.content p.deskripsi{
     margin: 0px;
     font-size: 16px;
     color: #4a4a4a;

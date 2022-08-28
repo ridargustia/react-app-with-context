@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
-import BlogPost from './container/BlogPost/BlogPost';
+// import BlogPost from './container/BlogPost/BlogPost';
+import Home from './container/Home/Home';
+// import BlogPost from './container/BlogPost/BlogPost';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BlogPost />
+    <Home />
   </React.StrictMode>
 );
 

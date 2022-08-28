@@ -1,14 +1,15 @@
+//TODO LIBRARY
 import React from "react";
 
 const post = (props) => {
     return(
         <div className="card">
-            <div className="img-thumb">
+            <div className="img-thumbnail">
                 <img src="https://placeimg.com/200/150/tech" alt="dummy" />
             </div>
             <div className="content">
-                <p className="title">{props.data.title}</p>
-                <p className="desc">{props.data.body}</p>
+                <p className="judul">{props.data.title}</p>
+                <p className="deskripsi">{props.data.body}</p>
                 <button className="update" onClick={() => props.update(props.data)}>Edit</button>
                 <button className="remove" onClick={() => props.remove(props.data.id)}>Hapus</button>
             </div>
