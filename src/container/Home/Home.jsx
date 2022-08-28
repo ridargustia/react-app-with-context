@@ -7,7 +7,7 @@ import BlogPost from "../pages/BlogPost/BlogPost";
 import Product from "../pages/Product/Product";
 import LifeCycle from "../pages/LifeCycle/LifeCycle";
 import YoutubeComp from "../pages/YoutubeComp/YoutubeComp";
-import DetailPost from "../pages/BlogPost/DetailPost/DetailPost";
+import DetailPost from "../../component/DetailPost/DetailPost";
 
 //TODO STYLES
 import './Home.css';
