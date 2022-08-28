@@ -138,6 +138,11 @@ class BlogPost extends Component {
         });
     }
 
+    //TODO Menjalankan fungsi detail
+    handleDetail = (id) => {
+
+    }
+
     render(){
         return(
             <Fragment>
@@ -151,7 +156,7 @@ class BlogPost extends Component {
                 </div>
                 {
                     this.state.post.map(post => {
-                        return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate} />
+                        return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate} goDetail={this.handleDetail} />
                     })
                 }
 

@@ -7,6 +7,7 @@ import BlogPost from "../pages/BlogPost/BlogPost";
 import Product from "../pages/Product/Product";
 import LifeCycle from "../pages/LifeCycle/LifeCycle";
 import YoutubeComp from "../pages/YoutubeComp/YoutubeComp";
+import DetailPost from "../pages/BlogPost/DetailPost/DetailPost";
 
 //TODO STYLES
 import './Home.css';
@@ -45,6 +46,7 @@ class Home extends Component {
                     </div>
                     <Routes>
                         <Route path="/" element={<BlogPost />} />
+                        <Route path="/detail-post/:id" element={<DetailPost />} />
                         <Route path="/lifecycle" element={<LifeCycle />} />
                         <Route path="/product" element={<Product />} />
                         <Route path="/youtube" element={<YoutubeComp />} />

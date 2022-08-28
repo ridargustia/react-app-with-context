@@ -122,3 +122,7 @@ button.btn-submit:hover{
     background-color: blue;
     color: whitesmoke;
 }
+
+.content p.judul:hover{
+    cursor: pointer;
+}
