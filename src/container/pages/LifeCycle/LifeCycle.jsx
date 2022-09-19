@@ -1,5 +1,6 @@
 //TODO LIBRARY
 import React, {Component, Fragment} from "react";
+import { connect } from "react-redux";
 
 //TODO STYLES
 import './LifeCycle.css';
@@ -79,9 +80,17 @@ class LifeCycle extends Component {
             <Fragment>
                 <p className="section-title">LifeCycle Page</p>
                 <button className="btn" onClick={this.changeCompCount}>Counting {this.state.count}</button>
+                <hr />
+                <p>Total Order: {this.props.order}</p>
             </Fragment>
         )
     }
 }
 
-export default LifeCycle;
+const mapStateToProps = state => {
+    return {
+        order: state.totalOrder
+    }
+}
+
+export default connect(mapStateToProps)(LifeCycle);

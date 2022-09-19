@@ -11,7 +11,7 @@ class CardProduct extends Component {
                 </div>
                 <div className="prod-title">Minyak Goreng</div>
                 <div className="prod-price">Rp26.000,00</div>
-                <Counter ubahCounter={(value) => this.props.ubahCounter(value)}/>
+                <Counter />
             </div>
         )
     }
