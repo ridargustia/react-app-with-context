@@ -8,32 +8,7 @@ import Home from './container/Home/Home';
 // import BlogPost from './container/BlogPost/BlogPost';
 import {createStore} from 'redux';
 import { Provider } from 'react-redux';
-
-//TODO Inisial state
-const initState = {
-  totalOrder: 0
-}
-
-//TODO create reducer
-const rootReducer = (state = initState, action) => {
-  if(action.type === 'PLUS_ORDER'){
-    return {
-      ...state,
-      totalOrder: state.totalOrder + 1,
-    }
-  }
-  if(action.type === 'MINUS_ORDER'){
-    let totalOrder = 0;
-    if (state.totalOrder > 0) {
-      totalOrder = state.totalOrder - 1;
-    }
-    return {
-      ...state,
-      totalOrder: totalOrder,
-    }
-  }
-  return state;
-}
+import rootReducer from './redux/reducer/globalReducer';
 
 //TODO Create Store
 const storeRedux = createStore(rootReducer);
