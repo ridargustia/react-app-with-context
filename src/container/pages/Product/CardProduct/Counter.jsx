@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import ActionType from "../../../../redux/reducer/globalActionType";
+import {RootContext} from "../../../Home/Home";
 
 class Counter extends Component {
     // state = {
@@ -32,11 +33,20 @@ class Counter extends Component {
     render(){
         console.log(this.props);
         return(
-            <div className="counter">
-                <button className="minus" onClick={this.props.handleMinus}>-</button>
-                <input type="text" value={this.props.order} />
-                <button className="plus" onClick={this.props.handlePlus}>+</button>
-            </div>
+            <RootContext.Consumer>
+                {
+                    value => {
+                        console.log(value);
+                        return(
+                            <div className="counter">
+                                <button className="minus" onClick={()=>null}>-</button>
+                                <input type="text" value={value.totalOrder} />
+                                <button className="plus" onClick={()=>null}>+</button>
+                            </div>
+                        );
+                    }
+                }
+            </RootContext.Consumer>
         )
     }
 }
@@ -54,4 +64,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default Counter;

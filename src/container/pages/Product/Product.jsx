@@ -32,7 +32,7 @@ class Product extends Component {
                         </div>
                         <div className="troley">
                             <FaShoppingCart size={20}/>
-                            <div className="count">{this.props.order}</div>
+                            <div className="count">{0}</div>
                         </div>
                     </div>
                     <CardProduct />
@@ -48,4 +48,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Product);
+export default Product;

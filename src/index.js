@@ -6,17 +6,11 @@ import reportWebVitals from './reportWebVitals';
 // import BlogPost from './container/BlogPost/BlogPost';
 import Home from './container/Home/Home';
 // import BlogPost from './container/BlogPost/BlogPost';
-import {createStore} from 'redux';
-import { Provider } from 'react-redux';
-import rootReducer from './redux/reducer/globalReducer';
-
-//TODO Create Store
-const storeRedux = createStore(rootReducer);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={storeRedux} ><Home /></Provider>
+    <Home />
   </React.StrictMode>
 );
 
