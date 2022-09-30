@@ -1,6 +1,7 @@
 //TODO LIBRARY
 import React, {Component, Fragment} from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
+import { RootContext } from "../../Home/Home";
 
 //TODO STYLES
 import './LifeCycle.css';
@@ -77,19 +78,21 @@ class LifeCycle extends Component {
     render(){
         console.log('render');
         return(
-            <Fragment>
-                <p className="section-title">LifeCycle Page</p>
-                <button className="btn" onClick={this.changeCompCount}>Counting {this.state.count}</button>
-                <hr />
-                <p>Total Order: {0}</p>
-            </Fragment>
+            <RootContext.Consumer>
+                {
+                    value=>{
+                        return(
+                            <Fragment>
+                                <p className="section-title">LifeCycle Page</p>
+                                <button className="btn" onClick={this.changeCompCount}>Counting {this.state.count}</button>
+                                <hr />
+                                <p>Total Order: {value.state.totalOrder}</p>
+                            </Fragment>
+                        );
+                    }
+                }
+            </RootContext.Consumer>
         )
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        order: state.totalOrder
     }
 }
 
