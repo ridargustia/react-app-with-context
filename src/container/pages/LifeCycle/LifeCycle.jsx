@@ -1,7 +1,7 @@
 //TODO LIBRARY
 import React, {Component, Fragment} from "react";
+import { GlobalConsumer } from "../../../context/Context";
 // import { connect } from "react-redux";
-import { RootContext } from "../../Home/Home";
 
 //TODO STYLES
 import './LifeCycle.css';
@@ -78,22 +78,14 @@ class LifeCycle extends Component {
     render(){
         console.log('render');
         return(
-            <RootContext.Consumer>
-                {
-                    value=>{
-                        return(
-                            <Fragment>
-                                <p className="section-title">LifeCycle Page</p>
-                                <button className="btn" onClick={this.changeCompCount}>Counting {this.state.count}</button>
-                                <hr />
-                                <p>Total Order: {value.state.totalOrder}</p>
-                            </Fragment>
-                        );
-                    }
-                }
-            </RootContext.Consumer>
+            <Fragment>
+                <p className="section-title">LifeCycle Page</p>
+                <button className="btn" onClick={this.changeCompCount}>Counting {this.state.count}</button>
+                <hr />
+                <p>Total Order: {this.props.state.totalOrder}</p>
+            </Fragment>
         )
     }
 }
 
-export default LifeCycle;
+export default GlobalConsumer(LifeCycle);
