@@ -12,6 +12,7 @@ import DetailPost from "../../component/DetailPost/DetailPost";
 //TODO STYLES
 import './Home.css';
 import GlobalProvider from "../../context/Context";
+import Hooks from "../pages/Hooks/Hooks";
 
 class Home extends Component {
     render(){
@@ -24,6 +25,7 @@ class Home extends Component {
                         <Link to="/lifecycle">LifeCycle</Link>
                         <Link to="/product">Product</Link>
                         <Link to="/youtube">Youtube</Link>
+                        <Link to="/hooks">Hooks</Link>
                     </div>
                     <Routes>
                         <Route path="/" element={<BlogPost />} />
@@ -31,6 +33,7 @@ class Home extends Component {
                         <Route path="/lifecycle" element={<LifeCycle />} />
                         <Route path="/product" element={<Product />} />
                         <Route path="/youtube" element={<YoutubeComp />} />
+                        <Route path="/hooks" element={<Hooks />} />
                     </Routes>
                 </Fragment>
             </Router>
