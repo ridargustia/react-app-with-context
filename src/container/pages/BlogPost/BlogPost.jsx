@@ -7,6 +7,7 @@ import Post from "../../../component/Post/Post";
 
 //TODO STYLES
 import './BlogPost.css';
+import API from "../../../services";
 
 class BlogPost extends Component {
     constructor(props){
@@ -22,19 +23,23 @@ class BlogPost extends Component {
                 userId: 1,
             },
             //TODO Mengkondisikan button update di form
-            isUpdate: false
+            isUpdate: false,
+            comments: []
         }
     }
 
     //TODO Pembuatan method get
     getPostApi = () => {
-        axios.get('http://localhost:3004/posts?_sort=id&_order=desc')
-        .then(res => {
-            // console.log(res.data);
+        API.getNewsBlog().then(result => {
             this.setState({
-                post: res.data
+                post: result
             })
         });
+        API.getComments().then(result => {
+            this.setState({
+                comments: result
+            })
+        })
     }
 
     //TODO Menyimpan data ke API
@@ -154,6 +159,11 @@ class BlogPost extends Component {
                     <textarea name="body" value={this.state.formBlogPost.body} id="body-content" cols="30" rows="10" onChange={this.handleFormChange}></textarea>
                     <button className="btn-submit" onClick={this.handleSubmit}>Simpan</button>
                 </div>
+                {
+                    this.state.comments.map(comment => {
+                        return <p>{comment.name} - {comment.email}</p>
+                    })
+                }
                 {
                     this.state.post.map(post => {
                         return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate} goDetail={this.handleDetail} />
