@@ -44,8 +44,7 @@ class BlogPost extends Component {
 
     //TODO Menyimpan data ke API
     postDataToAPI = () => {
-        axios.post('http://localhost:3004/posts', this.state.formBlogPost).then(res => {
-            console.log(res);
+        API.postNewBlog(this.state.formBlogPost).then(result => {
             this.getPostApi();
             this.setState({
                 formBlogPost: {
@@ -54,9 +53,7 @@ class BlogPost extends Component {
                     body: '',
                     userId: 1,
                 },
-            })
-        }, err => {
-            console.log('Error: ', err);
+            });
         });
     }
 
@@ -159,11 +156,11 @@ class BlogPost extends Component {
                     <textarea name="body" value={this.state.formBlogPost.body} id="body-content" cols="30" rows="10" onChange={this.handleFormChange}></textarea>
                     <button className="btn-submit" onClick={this.handleSubmit}>Simpan</button>
                 </div>
-                {
+                {/* {
                     this.state.comments.map(comment => {
                         return <p>{comment.name} - {comment.email}</p>
                     })
-                }
+                } */}
                 {
                     this.state.post.map(post => {
                         return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate} goDetail={this.handleDetail} />
