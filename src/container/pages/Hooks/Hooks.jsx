@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import './Hooks.css';
 
 // class Hooks extends Component{
@@ -10,6 +10,18 @@ import './Hooks.css';
 //         this.setState({
 //             count: this.state.count + 1
 //         })
+//     }
+
+//     componentDidMount(){
+//         document.title = `Title Count: ${this.state.count}`;
+//     }
+
+//     componentDidUpdate(){
+//         document.title = `Title Count: ${this.state.count}`;
+//     }
+
+//     componentWillUnmount(){
+//         document.title = 'React App';
 //     }
 
 //     render(){
@@ -27,6 +39,14 @@ const Hooks = () => {
     //* Buat State dan function untuk merubah state-nya
     //* Buat useState dan definisikan value awalnya
     const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        document.title = `Title Count: ${count}`;
+        return () => {
+            document.title = 'React App';
+        }
+    });
+
     return(
         <div className="p-hooks">
             <p>Score: {count}</p>
