@@ -74,9 +74,9 @@ class BlogPost extends Component {
 
     //TODO Method untuk jalankan fitur delete
     handleRemove = (data) => {
-        console.log(data);
-        //TODO Delete API menggunakan axios
-        axios.delete(`http://localhost:3004/posts/${data}`).then((res) => this.getPostApi());
+        API.deleteBlog(data).then(result => {
+            this.getPostApi();
+        });
     }
 
     //TODO Mengubah value objek sesuai inputan form
@@ -115,19 +115,16 @@ class BlogPost extends Component {
 
     //TODO Jalankan library axios dengan method PUT
     putDataToAPI = () => {
-        //TODO Jalankan library axios untuk method PUT
-        axios.put(`http://localhost:3004/posts/${this.state.formBlogPost.id}`, this.state.formBlogPost).then(res => {
-            console.log(res);
+        API.putBlog(this.state.formBlogPost, this.state.formBlogPost.id).then(result => {
             this.getPostApi();
             this.setState({
-                isUpdate: false,
                 formBlogPost: {
                     id: 1,
                     title: '',
                     body: '',
                     userId: 1,
                 },
-            })
+            });
         });
     }
 
